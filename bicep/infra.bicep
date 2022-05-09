@@ -28,7 +28,7 @@ resource appEnvironment 'Microsoft.App/managedEnvironments@2022-03-01' = {
   }
 }
 
-resource containerRegistry 'Microsoft.ContainerRegistry/registries@2021-12-01-preview' existing {
+resource containerRegistry 'Microsoft.ContainerRegistry/registries@2021-12-01-preview' existing = {
   name: 'authcontainerappexample'
 }
 
