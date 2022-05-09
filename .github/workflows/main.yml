@@ -14,19 +14,24 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
-      - name: Log into registry
-        uses: docker/login-action@v1
-        with:
-          registry: ${{ secrets.ACR_ENDPOINT }}
-          username: ${{ secrets.ACR_USERNAME }}
-          password: ${{ secrets.ACR_PASSWORD }}
-      - name: Build & Push
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          file: src/SecuredApi/Dockerfile
-          push: true
-          tags: latest
-          
       
+      - name: Azure Container Registry Build
+        uses: Azure/acr-build@v1
+        with:
+          service_principal: ${{ secrets.AZURE_CREDENTIALS.servicePrincipalId }}
+          # Service Principal password
+          service_principal_password: ${{ secrets.AZURE_CREDENTIALS.servicePrincipalPassword }}
+          # Azure Container Registry tenant
+          tenant: ${{ secrets.AZURE_CREDENTIALS.tenantId }}
+          # The name of the ACR, minus the .azurecr.io
+          registry: authcontainerappexample
+          # Repository to use
+          repository: secured-app
+          # Docker image name
+          image: secured-app
+          # Docker image tag, default to the commit SHA
+          tag: latest
+          # The folder in the Github repo that holds the source
+          folder: .
+          # The location of the Dockerfile; defaults to ./Dockerfile
+          dockerfile: src/SecuredApi/Dockerfile
