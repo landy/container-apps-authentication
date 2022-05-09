@@ -45,8 +45,8 @@ resource securedApp 'Microsoft.App/containerApps@2022-03-01' = {
       }
       registries: [
         {
-          server: containerRegistry.name
-          username: 'authcontainerappexample'
+          server: containerRegistry.properties.loginServer
+          username: containerRegistry.name
           passwordSecretRef: 'container-registry-password'
         }
       ]
