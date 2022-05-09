@@ -18,11 +18,11 @@ jobs:
       - name: Azure Container Registry Build
         uses: Azure/acr-build@v1
         with:
-          service_principal: ${{ secrets.AZURE_CREDENTIALS.servicePrincipalId }}
+          service_principal: "${{ secrets.servicePrincipalId }}"
           # Service Principal password
-          service_principal_password: ${{ secrets.AZURE_CREDENTIALS.servicePrincipalPassword }}
+          service_principal_password: "${{ secrets.servicePrincipalPassword }}"
           # Azure Container Registry tenant
-          tenant: ${{ secrets.AZURE_CREDENTIALS.tenantId }}
+          tenant: "${{ secrets.tenantId }}"
           # The name of the ACR, minus the .azurecr.io
           registry: authcontainerappexample
           # Repository to use
