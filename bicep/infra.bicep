@@ -78,6 +78,9 @@ resource securedApp 'Microsoft.App/containerApps@2022-03-01' = {
         redirectToProvider: 'authzero'
         unauthenticatedClientAction: 'RedirectToLoginPage'
       }
+      platform: {
+        enabled: true
+      }
       identityProviders: {
         customOpenIdConnectProviders: {
           authzero: {
@@ -93,9 +96,6 @@ resource securedApp 'Microsoft.App/containerApps@2022-03-01' = {
             login: {
               nameClaimType: 'name'
             }
-          }
-          platform: {
-            enabled: true
           }
         }
       }
