@@ -55,3 +55,4 @@ jobs:
             resourceGroupName: ${{ secrets.AZURE_RG}}
             template: ./bicep/infra.bicep
             failOnStdErr: false
+            parameters: authClientSecret="${{ secrets.AUTH_CLIENT_SECRET }}" authClientId="${{ secrets.AUTH_CLIENT_ID }}"
