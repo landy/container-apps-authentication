@@ -75,12 +75,12 @@ resource securedApp 'Microsoft.App/containerApps@2022-03-01' = {
     name: 'current'
     properties: {
       globalValidation: {
-        redirectToProvider: 'auth0'
+        redirectToProvider: 'authzero'
         unauthenticatedClientAction: 'RedirectToLoginPage'
       }
       identityProviders: {
         customOpenIdConnectProviders: {
-          auth0: {
+          authzero: {
             registration: {
               clientCredential: {
                 clientSecretSettingName: 'auth-client-secret'
