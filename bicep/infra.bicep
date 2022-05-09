@@ -66,7 +66,7 @@ resource securedApp 'Microsoft.App/containerApps@2022-03-01' = {
       containers: [
         {
           name: 'secured-app-container'
-          image: 'secured-app/secured-app:latest'
+          image: 'authcontainerappexample.azurecr.io/secured-app/secured-app:latest'
         }
       ]
     }
