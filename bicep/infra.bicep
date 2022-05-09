@@ -66,7 +66,7 @@ resource securedApp 'Microsoft.App/containerApps@2022-03-01' = {
       containers: [
         {
           name: 'secured-app-container'
-          image: 'mcr.microsoft.com/secured-app:latest'
+          image: 'secured-app/secured-app:latest'
         }
       ]
     }
