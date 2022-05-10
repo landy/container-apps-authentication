@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Giraffe" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Identity.Web" Version="1.24.1" />
   </ItemGroup>
 
   <ItemGroup>
