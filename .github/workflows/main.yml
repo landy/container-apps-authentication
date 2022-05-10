@@ -29,13 +29,13 @@ jobs:
           repository: secured-app
           # Docker image name
           image: secured-app
-          # Docker image tag, default to the commit SHA
-          tag: latest
           # The folder in the Github repo that holds the source
           folder: .
           # The location of the Dockerfile; defaults to ./Dockerfile
           dockerfile: src/SecuredApi/Dockerfile
-          
+    outputs:
+      imageTag: ${{ github.sha }}
+      
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -54,4 +54,4 @@ jobs:
             subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
             resourceGroupName: ${{ secrets.AZURE_RG}}
             template: ./bicep/infra.bicep
-            parameters: authClientSecret="${{ secrets.AUTH_CLIENT_SECRET }}" authClientId="${{ secrets.AUTH_CLIENT_ID }}"
+            parameters: authClientSecret="${{ secrets.AUTH_CLIENT_SECRET }}" authClientId="${{ secrets.AUTH_CLIENT_ID }}" imageTag=${{ needs.build.outputs.imageTag }}

@@ -1,4 +1,5 @@
 param location string = resourceGroup().location
+param imageTag string = 'latest'
 @secure()
 param authClientSecret string
 @secure()
@@ -66,7 +67,7 @@ resource securedApp 'Microsoft.App/containerApps@2022-03-01' = {
       containers: [
         {
           name: 'secured-app-container'
-          image: 'authcontainerappexample.azurecr.io/secured-app/secured-app:latest'
+          image: 'authcontainerappexample.azurecr.io/secured-app/secured-app:${imageTag}'
         }
       ]
     }

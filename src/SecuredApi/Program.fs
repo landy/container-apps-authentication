@@ -1,9 +1,18 @@
-﻿open Microsoft.AspNetCore.Builder
+﻿open System
+open Microsoft.AspNetCore.Builder
 open Giraffe
 open Microsoft.AspNetCore.Http
 
 let authHandler : HttpHandler =
     fun (next : HttpFunc) (ctx : HttpContext) ->
+        let info =
+            {|
+                path = ctx.Request.Path.Value
+                isAuthenticated = ctx.User.Identity.IsAuthenticated
+                claims = ctx.User.Claims
+                time = DateTime.UtcNow.ToString()
+                headers = ctx.Request.Headers
+            |}
         json ctx.User.Claims next ctx
 
 let routes = choose [
