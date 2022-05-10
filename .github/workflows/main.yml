@@ -27,6 +27,7 @@ jobs:
           registry: authcontainerappexample
           # Repository to use
           repository: secured-app
+          tag: ${{ github.sha }}
           # Docker image name
           image: secured-app
           # The folder in the Github repo that holds the source
