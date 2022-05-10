@@ -13,7 +13,7 @@ let authHandler : HttpHandler =
                 time = DateTime.UtcNow.ToString()
                 headers = ctx.Request.Headers
             |}
-        json ctx.User.Claims next ctx
+        json info next ctx
 
 let routes = choose [
     route "/" >=> text "hello world"
