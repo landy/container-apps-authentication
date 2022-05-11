@@ -23,7 +23,7 @@ let routes = choose [
 
 let builder = WebApplication.CreateBuilder()
 builder.Services.AddGiraffe() |> ignore
-builder.Services.AddAuthentication() |> ignore
+builder.Services.AddAuthentication().AddOpenIdConnect() |> ignore
 
 let app = builder.Build()
 app.UseGiraffe routes
