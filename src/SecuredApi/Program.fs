@@ -34,8 +34,8 @@ let routes = choose [
 
 let builder = WebApplication.CreateBuilder()
 builder.Services.AddAuthorization() |> ignore
-//builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration.GetSection("AzureAD")) |> ignore
-builder.Services.AddAuthentication().AddAppServicesAuthentication() |> ignore
+builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration.GetSection("AzureAD")) |> ignore
+builder.Services.AddAuthentication("EasyAuth") |> ignore// .AddAppServicesAuthentication() |> ignore
 builder.Services.AddGiraffe() |> ignore
 
 let app = builder.Build()
