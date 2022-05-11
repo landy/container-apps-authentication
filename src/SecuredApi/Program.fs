@@ -25,8 +25,7 @@ let routes = choose [
 let builder = WebApplication.CreateBuilder()
 builder.Services.AddGiraffe() |> ignore
 builder.Services.AddAuthorization() |> ignore
-//builder.Services.AddAuthentication() |> ignore
-builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration) |> ignore
+builder.Services.AddAuthentication().AddAppServicesAuthentication() |> ignore
 
 let app = builder.Build()
 app.UseGiraffe routes
