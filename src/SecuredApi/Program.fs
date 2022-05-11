@@ -2,7 +2,7 @@
 open Microsoft.AspNetCore.Builder
 open Giraffe
 open Microsoft.AspNetCore.Http
-//open Microsoft.Extensions.DependencyInjection
+open Microsoft.Extensions.DependencyInjection
 open Microsoft.Identity.Web
 
 let authHandler : HttpHandler =
@@ -24,6 +24,7 @@ let routes = choose [
 
 let builder = WebApplication.CreateBuilder()
 builder.Services.AddGiraffe() |> ignore
+builder.Services.AddAuthorization() |> ignore
 //builder.Services.AddAuthentication() |> ignore
 builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration) |> ignore
 
